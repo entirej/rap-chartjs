@@ -14,11 +14,12 @@ import org.eclipse.swt.graphics.RGB;
 public class ChartStyle
 {
 
-    private RGB   fillColor        = new RGB(128, 128, 128);
-    private float fillOpacity      = 1;
-    private RGB   strokeColor      = new RGB(0, 0, 0);
-    private RGB   pointColor       = new RGB(0, 0, 0);
-    private RGB   pointStrokeColor = new RGB(255, 255, 255);
+    private RGB     fillColor        = new RGB(128, 128, 128);
+    private float   fillOpacity      = 0.6f;
+    private RGB     strokeColor      = new RGB(0, 0, 0);
+    private RGB     pointColor       = new RGB(0, 0, 0);
+    private RGB     pointStrokeColor = new RGB(255, 255, 255);
+    private boolean fill             = true;
 
     public ChartStyle()
     {
@@ -92,6 +93,16 @@ public class ChartStyle
     public RGB getPointStrokeColor()
     {
         return pointStrokeColor;
+    }
+
+    public boolean isFill()
+    {
+        return fill;
+    }
+
+    public void setFill(boolean fill)
+    {
+        this.fill = fill;
     }
 
     public static String asCss(RGB rgb)
