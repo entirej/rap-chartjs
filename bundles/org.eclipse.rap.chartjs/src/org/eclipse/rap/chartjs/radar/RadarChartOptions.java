@@ -11,9 +11,9 @@ import org.eclipse.rap.json.JsonObject;
  */
 public class RadarChartOptions extends AbstarctChartOptions
 {
-    private Integer scaleMin;
-    private Integer scaleMax;
-    private Integer scaleStep;
+    private Float scaleMin;
+    private Float scaleMax;
+    private Float scaleStep;
 
     public RadarChartOptions()
     {
@@ -44,32 +44,32 @@ public class RadarChartOptions extends AbstarctChartOptions
         return jsonObject;
     }
 
-    public Integer getScaleMin()
+    public Float getScaleMin()
     {
         return scaleMin;
     }
 
-    public void setScaleMin(Integer scaleMin)
+    public void setScaleMin(Float scaleMin)
     {
         this.scaleMin = scaleMin;
     }
 
-    public Integer getScaleMax()
+    public Float getScaleMax()
     {
         return scaleMax;
     }
 
-    public void setScaleMax(Integer scaleMax)
+    public void setScaleMax(Float scaleMax)
     {
         this.scaleMax = scaleMax;
     }
 
-    public Integer getScaleStep()
+    public Float getScaleStep()
     {
         return scaleStep;
     }
 
-    public void setScaleStep(Integer scaleStep)
+    public void setScaleStep(Float scaleStep)
     {
         this.scaleStep = scaleStep;
     }
