@@ -24,22 +24,23 @@ public class RadarChartOptions extends AbstarctChartOptions
     public JsonObject toJson()
     {
         JsonObject jsonObject = super.toJson();
-        JsonObject r = new JsonObject();
-        jsonObject.add("scales", new JsonObject().add("r", r));
+        JsonObject scale = new JsonObject();
+        jsonObject.add("scale", scale);
+        JsonObject ticks = new JsonObject();
+        scale.add("ticks", ticks);
 
         if (scaleMin != null)
         {
-            r.add("min", scaleMin.intValue());
+            ticks.add("min", scaleMin.intValue());
         }
         if (scaleMax != null)
         {
-            r.add("max", scaleMax.intValue());
+            ticks.add("max", scaleMax.intValue());
         }
-        JsonObject ticks = new JsonObject();
-        r.add("ticks", ticks);
+      
         if (scaleStep != null)
         {
-            r.add("stepSize", scaleStep.intValue());
+            ticks.add("stepSize", scaleStep.intValue());
         }
         return jsonObject;
     }
