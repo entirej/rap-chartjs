@@ -190,11 +190,11 @@
 	        
 	    },
 	    
-	    chart_legend_action : function(e, legendItem) {
+	    chart_legend_action : function(e, legendItem,i) {
 	        
 	    	
 	    	// Do the original logic
-	        this.defaultLegendClickHandler(e, legendItem);
+	        this.defaultLegendClickHandler(e, legendItem,i);
 	        
 	        var remoteObject = rap.getRemoteObject(this);
 	        var args = {index: legendItem.datasetIndex,label:legendItem.text};
