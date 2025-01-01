@@ -78,8 +78,8 @@
 			if(this.context&&  this.context.options)
 			{
 				this.context.options.onClick = this.chart_action;
-				this.defaultLegendClickHandler = Chart.defaults.global.legend.onClick;
-				this.context.options.legend.onClick = this.chart_legend_action;
+				this.defaultLegendClickHandler = Chart.defaults.plugins.legend.onClick;
+				this.context.options.plugins.legend.onClick = this.chart_legend_action;
 				this.context.options.tooltips.callbacks.label = this.chart_tooltip;
 				
 				

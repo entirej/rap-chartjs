@@ -70,7 +70,7 @@ public class AbstarctChartOptions
         JsonObject result = new JsonObject();
         result.add("animation", new Animation(animation).toJson());
         // result.add( "animation", animation );
-        result.add("legend", legend.toJson());
+        //result.add("legend", legend.toJson());
         result.add("plugins", plugins.toJson());
 
         Tooltips tooltips = new Tooltips();
@@ -173,7 +173,7 @@ public class AbstarctChartOptions
 
     }
 
-    public static class Plugins
+    public  class Plugins
     {
         LabelsPlugin labels = new LabelsPlugin();
 
@@ -186,6 +186,7 @@ public class AbstarctChartOptions
         {
             JsonObject result = new JsonObject();
             result.add("labels", labels.toJson());
+            result.add("legend", legend.toJson());
 
             return result;
         }
