@@ -15,6 +15,7 @@ public class BarChartOptions extends AbstarctChartOptions
     float      categoryPercentage = 0.8f;
     Integer    barThickness;
     Integer    maxBarThickness;
+    String     indexAxis = "x";
     
     GridLines gridLines = new GridLines();
 
@@ -95,6 +96,7 @@ public class BarChartOptions extends AbstarctChartOptions
         axis.add("xAxes", xjsonArray);
         
         jsonObject.add("scales", axis);
+        jsonObject.add("indexAxis", indexAxis);
         for (Axis yaxis : yAxes)
         {
             JsonObject object = new JsonObject();

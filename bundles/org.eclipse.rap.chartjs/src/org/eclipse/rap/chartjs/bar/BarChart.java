@@ -16,11 +16,13 @@ public class BarChart extends AbstractChart
 
     public void load(BarChartRowData data, BarChartOptions options)
     {
+        options.indexAxis = "x";
         drawChart("bar", options.toJson(), data.toJson());
     }
     public void loadHorizontal(BarChartRowData data, BarChartOptions options)
     {
-        drawChart("horizontalBar", options.toJson(), data.toJson());
+        options.indexAxis = "y";
+        drawChart("bar", options.toJson(), data.toJson());
     }
 
 }
