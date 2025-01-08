@@ -86,14 +86,11 @@ public class BarChartOptions extends AbstarctChartOptions
     public JsonObject toJson()
     {
         JsonObject jsonObject = super.toJson();
-        JsonArray yjsonArray = new JsonArray();
-        JsonArray xjsonArray = new JsonArray();
+    
         
         JsonObject axis = new JsonObject();
         
-        axis.add("yAxes", yjsonArray);
-       
-        axis.add("xAxes", xjsonArray);
+      
         
         jsonObject.add("scales", axis);
         jsonObject.add("indexAxis", indexAxis);
@@ -102,7 +99,7 @@ public class BarChartOptions extends AbstarctChartOptions
             JsonObject object = new JsonObject();
             object.add("gridLines", gridLines.toJson());
             object.add("display", yaxis.isDisplay());
-            yjsonArray.add(object.add("ticks", yaxis.getTicks().toJson()));
+            axis.add("y",object.add("ticks", yaxis.getTicks().toJson()));
         }
         
         for (Axis yaxis : xAxes)
@@ -110,7 +107,7 @@ public class BarChartOptions extends AbstarctChartOptions
             JsonObject object = new JsonObject();
             object.add("gridLines", gridLines.toJson());
             object.add("display", yaxis.isDisplay());
-            xjsonArray.add(object.add("ticks", yaxis.getTicks().toJson()));
+            axis.add("x",object.add("ticks", yaxis.getTicks().toJson()));
         }
         
         if(xAxes.isEmpty())
@@ -122,7 +119,7 @@ public class BarChartOptions extends AbstarctChartOptions
                 axisObj.add("maxBarThickness", maxBarThickness);
             axisObj.add("categoryPercentage", categoryPercentage);
             axisObj.add("barPercentage", barPercentage);
-            xjsonArray.add(axisObj);
+            axis.add("x",axisObj);
         }
         if(yAxes.isEmpty())
         {
@@ -133,7 +130,7 @@ public class BarChartOptions extends AbstarctChartOptions
                 axisObj.add("maxBarThickness", maxBarThickness);
             axisObj.add("categoryPercentage", categoryPercentage);
             axisObj.add("barPercentage", barPercentage);
-            yjsonArray.add(axisObj);
+            axis.add("y",axisObj);
         }
 
         return jsonObject;

@@ -33,15 +33,17 @@ public class LineChartOptions extends AbstarctChartOptions
     public JsonObject toJson()
     {
         JsonObject jsonObject = super.toJson();
-        JsonArray jsonArray = new JsonArray();
-        jsonObject.add("scales", new JsonObject().add("yAxes", jsonArray));
+        JsonObject axis = new JsonObject();
+        
+      
+        
         
         
         for (Axis yaxis : yAxes)
         {
             JsonObject object = new JsonObject();
             object.add("gridLines", gridLines.toJson());
-            jsonArray.add(object.add("ticks", yaxis.getTicks().toJson()));
+            axis.add("y",object.add("ticks", yaxis.getTicks().toJson()));
         }
 
         return jsonObject;

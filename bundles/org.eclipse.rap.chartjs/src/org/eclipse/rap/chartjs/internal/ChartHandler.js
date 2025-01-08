@@ -167,7 +167,7 @@
 		},
 		chart_action : function(evt) {
 	    	
-			 var activeElement = this.chart.getElementAtEvent(evt);
+			 var activeElement = this.chart.getElementsAtEventForMode(evt, 'nearest', { intersect: true }, false) 
 	    	 if(activeElement!=null && activeElement[0]!=null && activeElement[0]._model!=null)
 			 {
 	    		 if(this.context.data.actions)
