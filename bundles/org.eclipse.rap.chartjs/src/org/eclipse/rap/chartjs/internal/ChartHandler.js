@@ -85,13 +85,13 @@
 				
 				if(this.context.options.scales) {
 					
-					if(this.context.options.scales.yAxes && this.context.options.scales.yAxes[0] && this.context.options.scales.yAxes[0].ticks)
-						this.context.options.scales.yAxes[0].ticks.callback= function(label, index, labels) {
+					if(this.context.options.scales.y && this.context.options.scales.y.ticks)
+						this.context.options.scales.y.ticks.callback= function(label, index, labels) {
 					        return isNaN(label) ? label :Number(label).toLocaleString();
 					    };
 					    
-				    if(this.context.options.scales.xAxes && this.context.options.scales.xAxes[0] && this.context.options.scales.xAxes[0].ticks)
-						this.context.options.scales.xAxes[0].ticks.callback= function(label, index, labels) {
+				    if(this.context.options.scales.x && this.context.options.scales.ticks)
+						this.context.options.scales.x.ticks.callback= function(label, index, labels) {
 					        return isNaN(label) ? label :Number(label).toLocaleString();
 					    };
 					

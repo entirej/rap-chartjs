@@ -16,6 +16,7 @@ public class BarChartOptions extends AbstarctChartOptions
     Integer    barThickness;
     Integer    maxBarThickness;
     String     indexAxis = "x";
+    boolean    stacked;
     
     GridLines gridLines = new GridLines();
 
@@ -81,6 +82,21 @@ public class BarChartOptions extends AbstarctChartOptions
     {
         this.maxBarThickness = maxBarThickness;
     }
+    
+    public void setStacked(boolean stacked)
+    {
+        this.stacked = stacked;
+    }
+    @Override
+    public AbstarctChartOptions setAnimation(boolean animation)
+    {
+        return super.setAnimation(animation);
+    }
+    
+    public boolean isStacked()
+    {
+        return stacked;
+    }
 
     @Override
     public JsonObject toJson()
@@ -99,6 +115,7 @@ public class BarChartOptions extends AbstarctChartOptions
             JsonObject object = new JsonObject();
             object.add("gridLines", gridLines.toJson());
             object.add("display", yaxis.isDisplay());
+            object.add("stacked", yaxis.isStacked());
             axis.add("y",object.add("ticks", yaxis.getTicks().toJson()));
         }
         
@@ -107,6 +124,7 @@ public class BarChartOptions extends AbstarctChartOptions
             JsonObject object = new JsonObject();
             object.add("gridLines", gridLines.toJson());
             object.add("display", yaxis.isDisplay());
+            object.add("stacked", yaxis.isStacked());
             axis.add("x",object.add("ticks", yaxis.getTicks().toJson()));
         }
         
@@ -119,6 +137,7 @@ public class BarChartOptions extends AbstarctChartOptions
                 axisObj.add("maxBarThickness", maxBarThickness);
             axisObj.add("categoryPercentage", categoryPercentage);
             axisObj.add("barPercentage", barPercentage);
+            axisObj.add("stacked", stacked);
             axis.add("x",axisObj);
         }
         if(yAxes.isEmpty())
@@ -130,6 +149,7 @@ public class BarChartOptions extends AbstarctChartOptions
                 axisObj.add("maxBarThickness", maxBarThickness);
             axisObj.add("categoryPercentage", categoryPercentage);
             axisObj.add("barPercentage", barPercentage);
+            axisObj.add("stacked", stacked);
             axis.add("y",axisObj);
         }
 
