@@ -78,7 +78,8 @@
 			if(this.context&&  this.context.options)
 			{
 				this.context.options.onClick = this.chart_action;
-				this.defaultLegendClickHandler = Chart.defaults.plugins.legend.onClick;
+				this.defaultLegendClickHandler = (this.context.type == 'pie' || this.context.type == 'doughnut') ?
+                Chart.controllers.doughnut.overrides.plugins.legend.onClick :  Chart.defaults.plugins.legend.onClick;
 				this.context.options.plugins.legend.onClick = this.chart_legend_action;
 				this.context.options.tooltips.callbacks.label = this.chart_tooltip;
 				
@@ -114,14 +115,18 @@
                 	var gc = this.parentNode.getContext("2d");
                 	var area = this.parent.getClientArea();
                 	gc.canvas.style.zIndex = 10000; // small hack to make sure chart gets the mouse events
-                  
+                    this.context.options.responsive = false;
+                    this.context.options.maintainAspectRatio = false;
                     gc.canvas.position = 'absolute';
-                    gc.canvas.height = area.height;
-                    gc.canvas.width = area.width;
+                    gc.canvas.height =area[3];
+                    gc.canvas.width = area[2];
                 	
                 	this.chart = new Chart( gc ,this.context);
                 	this.context.options.animation = false; // no animation on refresh
-                	
+                    let rChart  = this.chart;
+                    window.setTimeout(function() {
+                                rChart.resize();
+                            }, 100);
                 }
 				
 			} 
@@ -141,7 +146,7 @@
 				}
 				this.element.parentNode.removeChild(this.element);
 				
-				
+                
 			}
 		},
 
@@ -155,10 +160,13 @@
                 	var area = this.parent.getClientArea();
                 	gc.canvas.style.zIndex = 10000; // small hack to make sure chart gets the mouse events
                 	gc.canvas.position = 'absolute';
-                    gc.canvas.height = area.height;
-                    gc.canvas.width = area.width;
+                    gc.canvas.height =area[3];
+                    gc.canvas.width = area[2];
                 	
-                    this.chart.resize();
+                    let rChart  = this.chart;
+                     window.setTimeout(function() {
+                     rChart.resize();
+                                                }, 100);
                 	
                 }
 				

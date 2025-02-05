@@ -114,6 +114,23 @@ public class Ticks
         result.add("display", display);
         return result;
     }
+    public JsonObject toJson( JsonObject result)
+    {
+        
+        if (beginAtZero != null)
+            result.add("beginAtZero", beginAtZero);
+        if (min != null)
+            result.add("min", min);
+        if (max != null)
+            result.add("max", max);
+       
+        if (suggestedMax != null)
+            result.add("suggestedMax", suggestedMax);
+        if (suggestedMin != null)
+            result.add("suggestedMin", suggestedMin);
+    
+        return result;
+    }
 
     /*
      * beginAtZero Boolean if true, scale will include 0 if it is not already

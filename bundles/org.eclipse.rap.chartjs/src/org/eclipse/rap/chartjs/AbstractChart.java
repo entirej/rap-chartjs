@@ -38,6 +38,8 @@ public abstract class AbstractChart extends Canvas
     private static final String CHART_DATA    = "chartData";
     private static final String CHART_MIN_JS  = "chart.min.js";
     private static final String CHARTPAINT_HANDLER_JS  = "ChartHandler.js";
+    private static final String CHART_PULGIN_LBL_JS  = "chartjs-plugin-labels.min.js";
+
   //  private static final String CHARTPAINT_LISTENER_JS  = "ChartPaintListener.js";
     private static final String CHART_TYPE    = "chartType";
     private static final String REMOTE_TYPE = "chartjs.AbstractChart";
@@ -129,6 +131,8 @@ public abstract class AbstractChart extends Canvas
     {
         ClientFileLoader service = RWT.getClient().getService(ClientFileLoader.class);
         service.requireJs(RWT.getResourceManager().getLocation(CHART_MIN_JS));
+        service.requireJs(RWT.getResourceManager().getLocation(CHART_PULGIN_LBL_JS));
+
         service.requireJs(RWT.getResourceManager().getLocation(CHARTPAINT_HANDLER_JS));
     }
 
@@ -139,6 +143,16 @@ public abstract class AbstractChart extends Canvas
         {
             InputStream inputStream = ChartPaintListener.class.getResourceAsStream(CHART_MIN_JS);
             manager.register(CHART_MIN_JS, inputStream);
+            try
+            {
+                inputStream.close();
+            }
+            catch (IOException e)
+            {
+                throw new RuntimeException(e);
+            }
+            inputStream = ChartPaintListener.class.getResourceAsStream(CHART_PULGIN_LBL_JS);
+            manager.register(CHART_PULGIN_LBL_JS, inputStream);
             try
             {
                 inputStream.close();

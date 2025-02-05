@@ -117,6 +117,7 @@ public class BarChartOptions extends AbstarctChartOptions
             object.add("display", yaxis.isDisplay());
             object.add("stacked", yaxis.isStacked());
             axis.add("y",object.add("ticks", yaxis.getTicks().toJson()));
+            yaxis.getTicks().toJson(object);
         }
         
         for (Axis yaxis : xAxes)
@@ -126,6 +127,7 @@ public class BarChartOptions extends AbstarctChartOptions
             object.add("display", yaxis.isDisplay());
             object.add("stacked", yaxis.isStacked());
             axis.add("x",object.add("ticks", yaxis.getTicks().toJson()));
+            yaxis.getTicks().toJson(object);
         }
         
         if(xAxes.isEmpty())

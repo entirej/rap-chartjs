@@ -44,6 +44,7 @@ public class LineChartOptions extends AbstarctChartOptions
             JsonObject object = new JsonObject();
             object.add("gridLines", gridLines.toJson());
             axis.add("y",object.add("ticks", yaxis.getTicks().toJson()));
+            yaxis.getTicks().toJson(object);
         }
 
         return jsonObject;
