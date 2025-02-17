@@ -34,7 +34,7 @@ public class LineChartOptions extends AbstarctChartOptions
     {
         JsonObject jsonObject = super.toJson();
         JsonObject axis = new JsonObject();
-        
+        jsonObject.add("scales", axis);
       
         
         

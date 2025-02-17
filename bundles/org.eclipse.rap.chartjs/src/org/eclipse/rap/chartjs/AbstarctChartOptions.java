@@ -132,6 +132,7 @@ public class AbstarctChartOptions
     public static class Legend
     {
         boolean enabled  = true;
+        boolean defaultAction  = true;
         String  position = "bottom";
 
         public Legend()
@@ -143,6 +144,7 @@ public class AbstarctChartOptions
         {
             JsonObject result = new JsonObject();
             result.add("display", enabled);
+            result.add("defaultAction", defaultAction);
             if (enabled)
             {
                 result.add("position", position);
@@ -169,6 +171,15 @@ public class AbstarctChartOptions
         public String getPosition()
         {
             return position;
+        }
+        
+        public boolean isDefaultAction()
+        {
+            return defaultAction;
+        }
+        public void setDefaultAction(boolean defaultAction)
+        {
+            this.defaultAction = defaultAction;
         }
 
     }

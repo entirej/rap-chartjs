@@ -201,8 +201,9 @@
 	    chart_legend_action : function(e, legendItem,i) {
 	        
 	    	
-	    	// Do the original logic
-	        this.defaultLegendClickHandler(e, legendItem,i);
+            if(this.context.options.plugins.legend.defaultAction)
+	    	  // Do the original logic
+	           this.defaultLegendClickHandler(e, legendItem,i);
 	        
 	        var remoteObject = rap.getRemoteObject(this);
 	        var args = {index: legendItem.datasetIndex,label:legendItem.text};
